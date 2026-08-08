@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD SHAKIB KHAN - Aesthetic Portfolio</title>
+    <!-- Google Fonts: Outfits & Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* =========================================================
+           1. CSS RESET & AESTHETIC DESIGN SYSTEM
+           ========================================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg-color: #0b0f19;          /* Deep Aesthetic Aurora Dark */
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --bg-card-hover: rgba(255, 255, 255, 0.08);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            
+            --accent-glow-1: #6366f1;     /* Soft Indigo */
+            --accent-glow-2: #06b6d4;     /* Cyan */
+            --accent-glow-3: #ec4899;     /* Soft Pink */
+
+            --text-heading: #f8fafc;
+            --text-body: #94a3b8;
+            --text-light: #cbd5e1;
+            
+            --shadow-glow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-body);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        h1, h2, h3, h4, .logo {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* =========================================================
+           2. AESTHETIC ANIMATED GLOW BACKGROUND
+           ========================================================= */
+        .ambient-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .glow-sphere {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.35;
+            animation: floatGlow 18s infinite alternate ease-in-out;
+        }
+
+        .glow-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--accent-glow-1);
+            top: -100px;
+            left: -100px;
+            animation-duration: 14s;
+        }
+
+        .glow-2 {
+            width: 450px;
+            height: 450px;
+            background: var(--accent-glow-2);
+            bottom: 10%;
+            right: -80px;
+            animation-duration: 20s;
+        }
+
+        .glow-3 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent-glow-3);
+            top: 45%;
+            left: 30%;
+            animation-duration: 16s;
+        }
+
+        @keyframes floatGlow {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(60px, 80px) scale(1.15); }
+            100% { transform: translate(-40px, 50px) scale(0.9); }
+        }
+
+        /* Subtle grid pattern overlay */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        /* Container Layout */
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-body);
+            font-size: 0.95rem;
+            margin-bottom: 50px;
+        }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(255, 255, 255, 0.18);
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        /* =========================================================
+           3. NAVBAR (GLASS)
+           ========================================================= */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(11, 15, 25, 0.7);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-glass);
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 75px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent-glow-2);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-glow-1), var(--accent-glow-2));
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--text-heading);
+            cursor: pointer;
+        }
+
+        /* =========================================================
+           4. HERO SECTION
+           ========================================================= */
+        #home {
+            padding-top: 150px;
+            padding-bottom: 100px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            width: 100%;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text .greeting-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 30px;
+            color: #a5b4fc;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            animation: pulseGlow 3s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 5px rgba(99, 102, 241, 0.2); }
+            100% { box-shadow: 0 0 18px rgba(99, 102, 241, 0.5); }
+        }
+
+        .hero-text h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            line-height: 1.15;
+            margin-bottom: 18px;
+            letter-spacing: -1px;
+        }
+
+        /* Gradient text highlight */
+        .gradient-text {
+            background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1.05rem;
+            color: var(--text-body);
+            margin-bottom: 30px;
+            max-width: 520px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-glow-1), var(--accent-glow-2));
+            color: #ffffff;
+            border: none;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.6);
+        }
+
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-heading);
+            border: 1px solid var(--border-glass);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            transform: translateY(-3px);
+        }
+
+        /* Profile Image Container */
+        .hero-img-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .aesthetic-frame {
+            position: relative;
+            width: 320px;
+            height: 390px;
+            border-radius: 24px;
+            padding: 8px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.02));
+            box-shadow: var(--shadow-glow);
+            animation: floatImage 6s infinite ease-in-out;
+        }
+
+        @keyframes floatImage {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .profile-img-wrapper {
+            width: 100%;
+            height: 100%;
+            border-radius: 18px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .profile-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.92) contrast(1.05);
+            transition: transform 0.5s ease;
+        }
+
+        .aesthetic-frame:hover img {
+            transform: scale(1.04);
+        }
+
+        .img-edit-badge {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            color: var(--text-light);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            white-space: nowrap;
+        }
+
+        /* =========================================================
+           5. ABOUT & EDUCATION SECTION
+           ========================================================= */
+        .about-section {
+            padding: 100px 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .info-card h3 {
+            font-size: 1.3rem;
+            color: var(--text-heading);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .info-card h3 i {
+            color: var(--accent-glow-2);
+        }
+
+        .edu-timeline {
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid var(--border-glass);
+        }
+
+        .edu-item {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .edu-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-glow-2);
+            box-shadow: 0 0 10px var(--accent-glow-2);
+        }
+
+        .edu-item h4 {
+            font-size: 1.1rem;
+            color: var(--text-heading);
+        }
+
+        .edu-item p {
+            font-size: 0.9rem;
+            color: var(--text-body);
+        }
+
+        /* Language Skills List */
+        .lang-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .lang-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--border-glass);
+        }
+
+        .lang-item:last-child {
+            border-bottom: none;
+        }
+
+        .lang-badge {
+            background: rgba(6, 182, 212, 0.15);
+            color: var(--accent-glow-2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* =========================================================
+           6. SKILLS SECTION
+           ========================================================= */
+        .skills-section {
+            padding: 100px 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 24px;
+        }
+
+        .skill-card {
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        .skill-card i {
+            font-size: 2.8rem;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--accent-glow-1), var(--accent-glow-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover i {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .skill-card h4 {
+            font-size: 1.15rem;
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+
+        .skill-card p {
+            font-size: 0.88rem;
+            color: var(--text-body);
+        }
+
+        /* =========================================================
+           7. HOBBIES & SOLITUDE SECTION
+           ========================================================= */
+        .hobbies-section {
+            padding: 100px 0;
+        }
+
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .hobby-card .icon-badge {
+            width: 55px;
+            height: 55px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glass);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--accent-glow-2);
+            margin-bottom: 20px;
+        }
+
+        .hobby-card h3 {
+            font-size: 1.3rem;
+            color: var(--text-heading);
+            margin-bottom: 12px;
+        }
+
+        .hobby-card p {
+            font-size: 0.95rem;
+            color: var(--text-body);
+            line-height: 1.8;
+        }
+
+        /* Aesthetic Reflection Box */
+        .aesthetic-quote {
+            margin-top: 22px;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--accent-glow-3);
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* =========================================================
+           8. CONTACT SECTION
+           ========================================================= */
+        .contact-section {
+            padding: 100px 0;
+        }
+
+        .contact-card {
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text-heading);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-glass);
+            border-radius: 12px;
+            color: #ffffff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent-glow-1);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
+        }
+
+        .form-group textarea {
+            height: 130px;
+            resize: vertical;
+        }
+
+        /* =========================================================
+           9. FOOTER
+           ========================================================= */
+        footer {
+            padding: 35px 0;
+            border-top: 1px solid var(--border-glass);
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-body);
+        }
+
+        /* =========================================================
+           10. RESPONSIVE DESIGN & MOBILE MENU
+           ========================================================= */
+        @media (max-width: 868px) {
+            .hero-wrapper {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero-text p {
+                margin: 0 auto 30px auto;
+            }
+
+            .btn-group {
+                justify-content: center;
+            }
+
+            .aesthetic-frame {
+                width: 270px;
+                height: 330px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 75px;
+                left: 0;
+                width: 100%;
+                background: rgba(11, 15, 25, 0.95);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: center;
+                padding: 30px 0;
+                gap: 20px;
+                border-bottom: 1px solid var(--border-glass);
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ambient Glowing Background (Aesthetic Floating Orbs) -->
+    <div class="ambient-background">
+        <div class="glow-sphere glow-1"></div>
+        <div class="glow-sphere glow-2"></div>
+        <div class="glow-sphere glow-3"></div>
+    </div>
+    <div class="grid-overlay"></div>
+
+    <!-- NAVIGATION BAR -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">SHAKIB<span>.</span></div>
+                
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About & Edu</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#hobbies">Hobbies & Solitude</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+
+                <div class="menu-toggle" onclick="toggleMenu()">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home">
+        <div class="container">
+            <div class="hero-wrapper">
+                <div class="hero-text">
+                    <div class="greeting-badge">
+                        <i class="fa-solid fa-sparkles"></i> Aesthetic Portfolio
+                    </div>
+                    <h1>Hi, I'm <span class="gradient-text">MD SHAKIB KHAN</span></h1>
+                    <p>Science Graduate (SSC & HSC) passionate about modern web technologies. Skilled in HTML5, CSS3, GitHub, and web research, with a strong drive for learning and creating clean digital experiences.</p>
+                    
+                    <div class="btn-group">
+                        <a href="#contact" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Get In Touch</a>
+                        <a href="#about" class="btn btn-glass"><i class="fa-solid fa-user"></i> Explore Profile</a>
+                    </div>
+                </div>
+
+                <!-- Floating Picture Frame -->
+                <div class="hero-img-container">
+                    <div class="aesthetic-frame">
+                        <div class="profile-img-wrapper">
+                            <img src="assets/mhs.jpg" alt="MD SHAKIB KHAN">
+                            <div class="img-edit-badge"><i class="fa-solid fa-camera"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT & EDUCATION SECTION -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">About & Academic Journey</h2>
+            <p class="section-subtitle">A glimpse into my background, education, and languages</p>
+
+            <div class="about-grid">
+                <div class="glass-card info-card">
+                    <h3><i class="fa-solid fa-user"></i> Personal Background</h3>
+                    <p>I am <strong>MD SHAKIB KHAN</strong>. Having completed my schooling in Science, I developed a strong analytical mindset. I love exploring the digital space, learning new web tools, and building aesthetic front-end layouts.</p>
+
+                    <h3 style="margin-top: 25px;"><i class="fa-solid fa-language"></i> Language Proficiency</h3>
+                    <ul class="lang-list">
+                        <li class="lang-item">
+                            <span><i class="fa-solid fa-circle-check" style="color: var(--accent-glow-2);"></i> Bengali</span>
+                            <span class="lang-badge">Native / Mother Tongue</span>
+                        </li>
+                        <li class="lang-item">
+                            <span><i class="fa-solid fa-circle-check" style="color: var(--accent-glow-2);"></i> English</span>
+                            <span class="lang-badge">Second Language / Professional</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass-card info-card">
+                    <h3><i class="fa-solid fa-graduation-cap"></i> Science Education</h3>
+                    <div class="edu-timeline">
+                        <div class="edu-item">
+                            <h4>HSC (Higher Secondary Certificate)</h4>
+                            <p><strong>Group:</strong> Science</p>
+                            <p>Focused on Science, Physics, Chemistry & Mathematics.</p>
+                        </div>
+                        <div class="edu-item">
+                            <h4>SSC (Secondary School Certificate)</h4>
+                            <p><strong>Group:</strong> Science</p>
+                            <p>Successfully completed secondary education with a strong scientific foundation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2 class="section-title">Technical Expertise</h2>
+            <p class="section-subtitle">Technologies and tools I work with</p>
+
+            <div class="skills-grid">
+                <div class="glass-card skill-card">
+                    <i class="fa-brands fa-html5"></i>
+                    <h4>HTML5</h4>
+                    <p>Semantic markup & structured web page design.</p>
+                </div>
+
+                <div class="glass-card skill-card">
+                    <i class="fa-brands fa-css3-alt"></i>
+                    <h4>CSS3</h4>
+                    <p>Modern layouts, animations, Glassmorphism & responsiveness.</p>
+                </div>
+
+                <div class="glass-card skill-card">
+                    <i class="fa-brands fa-github"></i>
+                    <h4>GitHub</h4>
+                    <p>Repository management, version control & code hosting.</p>
+                </div>
+
+                <div class="glass-card skill-card">
+                    <i class="fa-solid fa-compass"></i>
+                    <h4>Web Browsing</h4>
+                    <p>Deep web research, finding solutions & tech discovery.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOBBIES & SOLITUDE SECTION -->
+    <section id="hobbies" class="hobbies-section">
+        <div class="container">
+            <h2 class="section-title">Hobbies & Reflection</h2>
+            <p class="section-subtitle">Activities that keep me active, peaceful, and inspired</p>
+
+            <div class="hobbies-grid">
+                <div class="glass-card hobby-card">
+                    <div class="icon-badge">
+                        <i class="fa-solid fa-futbol"></i>
+                    </div>
+                    <h3>Playing Football</h3>
+                    <p>Football is my favorite sport. It keeps me physically active, sharpens quick decision-making under pressure, and instills a spirit of discipline and teamwork.</p>
+                </div>
+
+                <div class="glass-card hobby-card">
+                    <div class="icon-badge">
+                        <i class="fa-solid fa-person-walking"></i>
+                    </div>
+                    <h3>Walking Alone in Calm Places</h3>
+                    <p>I genuinely value solitary quiet time. Taking peaceful walks alone in quiet environments helps me unwind, reorganize my thoughts, clear my mind, and recharge my creative inspiration.</p>
+                    
+                    <div class="aesthetic-quote">
+                        <i class="fa-solid fa-quote-left"></i> "In quiet solitude, the mind finds its ultimate clarity and inner peace."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Send a Message</h2>
+            <p class="section-subtitle">Let's connect and build something great together</p>
+
+            <div class="glass-card contact-card">
+                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent successfully!');">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" placeholder="Enter your email address" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" placeholder="Write your message..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 MD SHAKIB KHAN. Crafted with Glassmorphism & Aesthetic Glow.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Nav -->
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
